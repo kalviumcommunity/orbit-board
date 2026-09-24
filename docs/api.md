@@ -61,8 +61,7 @@ body: { "title": "Updated", "description": "..." }
 
 DELETE /api/boards/:boardId/columns/:columnId/cards/:cardId
 → 200 { "ok": true }
-> 🐛 KNOWN BUG: deleting a card currently throws a server error.
->    See docs/faq.md — this is an open "good first issue".
+→ 404 { "error": "Card not found" }
 ```
 
 ## Errors
