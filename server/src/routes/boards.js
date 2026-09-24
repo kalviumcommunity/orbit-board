@@ -28,7 +28,10 @@ router.get('/boards/:boardId', (req, res, next) => {
 // POST /api/boards — create a board
 router.post('/boards', (req, res, next) => {
   try {
-    const board = store.createBoard(req.body.title);
+    if (!req.body || typeof req.body.title !== 'string' || !req.body.title.trim()) {
+      return res.status(400).json({ error: 'title is required and must be a non-empty string' });
+    }
+    const board = store.createBoard(req.body.title.trim());
     res.status(201).json(board);
   } catch (err) {
     next(err);
