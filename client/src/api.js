@@ -32,8 +32,6 @@ export function addCard(boardId, columnId, card) {
   });
 }
 
-// TODO: card editing is read-only for now — this helper is unused until the UI
-// wires up an edit form.
 export function updateCard(boardId, columnId, cardId, updates) {
   return request(`/boards/${boardId}/columns/${columnId}/cards/${cardId}`, {
     method: 'PUT',
@@ -44,5 +42,12 @@ export function updateCard(boardId, columnId, cardId, updates) {
 export function deleteCard(boardId, columnId, cardId) {
   return request(`/boards/${boardId}/columns/${columnId}/cards/${cardId}`, {
     method: 'DELETE',
+  });
+}
+
+export function moveCard(boardId, sourceColumnId, targetColumnId, cardId, targetIndex) {
+  return request(`/boards/${boardId}/move-card`, {
+    method: 'POST',
+    body: JSON.stringify({ sourceColumnId, targetColumnId, cardId, targetIndex }),
   });
 }

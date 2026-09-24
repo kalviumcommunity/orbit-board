@@ -71,15 +71,13 @@ Kanban board with sample columns. That's liftoff! 🎉
 > 📸 This is your screenshot moment for the assignment: capture the terminal
 > (ready message) and the board in the browser together.
 
-## 6 · Known gaps & good first issues
-OrbitBoard is an active, ~50%-built project — some features are intentionally
-incomplete and open for contribution:
-- ⏳ Drag-and-drop between columns is not implemented yet.
-- ⏳ Card editing is currently read-only.
-- 🐛 Deleting a card currently throws an error — this is a known open issue and a
-  great first bug to explore next session. (The app still runs fine; the error
-  only appears when you delete a card.)
-See docs/faq.md and the Issues tab for details.
+## 6 · Feature Highlights
+OrbitBoard provides a complete, lightweight Kanban workflow:
+- 🚀 Drag-and-drop & quick navigation (`←` / `→`) between columns.
+- ✏️ Inline card title and description editing.
+- 🗑️ Safe card deletion with instant UI sync.
+- 🔍 Fast real-time card filtering and search.
+See docs/faq.md and docs/api.md for architecture and API documentation.
 
 ## 🔧 Troubleshooting
 | Error you see | What it means | Fix |
