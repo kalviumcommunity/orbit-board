@@ -101,16 +101,39 @@ function deleteCard(boardId, columnId, cardId) {
   const boards = readData();
   const { column } = findColumn(boards, boardId, columnId);
 
-  // 🐛 KNOWN BUG (good first issue — see docs/faq.md):
-  // This looks up the card by the WRONG property. Cards use `id`, not `cardId`,
-  // so `target` is always `undefined`. Reading `target.id` on the next line then
-  // throws: "Cannot read properties of undefined (reading 'id')".
-  // The app runs fine otherwise — the error only appears on delete.
-  const target = column.cards.find((card) => card.cardId === cardId);
-  column.cards = column.cards.filter((card) => card.id !== target.id);
+  const targetIndex = column.cards.findIndex((card) => card.id === cardId);
+  if (targetIndex === -1) {
+    throw Object.assign(new Error('Card not found'), { status: 404 });
+  }
+  column.cards.splice(targetIndex, 1);
 
   writeData(boards);
   return { ok: true };
+}
+
+function moveCard(boardId, sourceColumnId, targetColumnId, cardId, targetIndex) {
+  const boards = readData();
+  const board = boards.find((b) => b.id === boardId);
+  if (!board) throw Object.assign(new Error('Board not found'), { status: 404 });
+
+  const sourceCol = board.columns.find((c) => c.id === sourceColumnId);
+  if (!sourceCol) throw Object.assign(new Error('Source column not found'), { status: 404 });
+
+  const targetCol = board.columns.find((c) => c.id === targetColumnId);
+  if (!targetCol) throw Object.assign(new Error('Target column not found'), { status: 404 });
+
+  const cardIndex = sourceCol.cards.findIndex((c) => c.id === cardId);
+  if (cardIndex === -1) throw Object.assign(new Error('Card not found in source column'), { status: 404 });
+
+  const [card] = sourceCol.cards.splice(cardIndex, 1);
+  if (typeof targetIndex === 'number' && targetIndex >= 0 && targetIndex <= targetCol.cards.length) {
+    targetCol.cards.splice(targetIndex, 0, card);
+  } else {
+    targetCol.cards.push(card);
+  }
+
+  writeData(boards);
+  return { ok: true, card, board };
 }
 
 module.exports = {
@@ -122,4 +145,5 @@ module.exports = {
   createCard,
   updateCard,
   deleteCard,
+  moveCard,
 };

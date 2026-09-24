@@ -78,16 +78,14 @@ snag, that's where the answers are.
 
 ---
 
-## 🐣 Good first issues
+## 🎯 Features & Roadmap
 
-OrbitBoard is a great place to make your first open-source contribution:
+OrbitBoard features:
 
-- ⏳ **Drag-and-drop** between columns is not implemented yet.
-- ⏳ **Card editing** is currently read-only.
-- 🐛 **Deleting a card throws an error** — a well-contained bug, perfect for a
-  first fix. (The app still runs fine otherwise.)
-
-See [`docs/faq.md`](./docs/faq.md) and the **Issues** tab for details.
+- ✅ **Drag-and-drop & column navigation** — smoothly move cards across workflow lanes.
+- ✅ **Full card lifecycle** — create, inline edit, and delete cards.
+- ✅ **Search & filter** — quickly find cards by keyword across all lanes.
+- ✅ **Robust REST API** — persistent JSON store with proper error handling.
 
 ---
 

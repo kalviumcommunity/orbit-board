@@ -57,12 +57,13 @@ body: { "title": "New card", "description": "optional" }
 PUT /api/boards/:boardId/columns/:columnId/cards/:cardId
 body: { "title": "Updated", "description": "..." }
 → 200 Card
-> ⚠️ NOTE: card editing is currently read-only in the UI (TODO).
 
 DELETE /api/boards/:boardId/columns/:columnId/cards/:cardId
 → 200 { "ok": true }
-> 🐛 KNOWN BUG: deleting a card currently throws a server error.
->    See docs/faq.md — this is an open "good first issue".
+
+POST /api/boards/:boardId/move-card
+body: { "sourceColumnId": "col-1", "targetColumnId": "col-2", "cardId": "card-1" }
+→ 200 { "ok": true, "card": Card, "board": Board }
 ```
 
 ## Errors

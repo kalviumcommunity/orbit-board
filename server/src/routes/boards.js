@@ -47,7 +47,6 @@ router.post('/boards/:boardId/columns/:columnId/cards', (req, res, next) => {
 });
 
 // PUT /api/boards/:boardId/columns/:columnId/cards/:cardId — update a card
-// NOTE: card editing is read-only in the UI for now (TODO), but the API works.
 router.put('/boards/:boardId/columns/:columnId/cards/:cardId', (req, res, next) => {
   try {
     const { boardId, columnId, cardId } = req.params;
@@ -59,11 +58,22 @@ router.put('/boards/:boardId/columns/:columnId/cards/:cardId', (req, res, next) 
 });
 
 // DELETE /api/boards/:boardId/columns/:columnId/cards/:cardId — delete a card
-// 🐛 Known bug lives in store.deleteCard (see docs/faq.md).
 router.delete('/boards/:boardId/columns/:columnId/cards/:cardId', (req, res, next) => {
   try {
     const { boardId, columnId, cardId } = req.params;
     const result = store.deleteCard(boardId, columnId, cardId);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// POST /api/boards/:boardId/move-card — move a card between columns or reorder
+router.post('/boards/:boardId/move-card', (req, res, next) => {
+  try {
+    const { boardId } = req.params;
+    const { sourceColumnId, targetColumnId, cardId, targetIndex } = req.body;
+    const result = store.moveCard(boardId, sourceColumnId, targetColumnId, cardId, targetIndex);
     res.json(result);
   } catch (err) {
     next(err);
