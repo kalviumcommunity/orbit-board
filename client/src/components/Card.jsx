@@ -9,8 +9,6 @@ export default function Card({ boardId, columnId, card, onChanged }) {
     setBusy(true);
     setError(null);
     try {
-      // 🐛 The server currently throws when deleting a card (known good-first
-      // issue — see docs/faq.md). The rest of the app keeps working.
       await api.deleteCard(boardId, columnId, card.id);
       onChanged();
     } catch (err) {
