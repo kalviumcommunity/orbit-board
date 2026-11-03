@@ -76,9 +76,7 @@ OrbitBoard is an active, ~50%-built project — some features are intentionally
 incomplete and open for contribution:
 - ⏳ Drag-and-drop between columns is not implemented yet.
 - ⏳ Card editing is currently read-only.
-- 🐛 Deleting a card currently throws an error — this is a known open issue and a
-  great first bug to explore next session. (The app still runs fine; the error
-  only appears when you delete a card.)
+
 See docs/faq.md and the Issues tab for details.
 
 ## 🔧 Troubleshooting
@@ -89,7 +87,7 @@ See docs/faq.md and the Issues tab for details.
 | npm ERR! ERESOLVE / peer dep | Dependency version conflict | Use npm install --legacy-peer-deps (see §3) |
 | Missing config: did you run cp .env.example .env? | No .env file | cp .env.example .env, then restart |
 | Error: listen EADDRINUSE :::3000 | Port 3000 is busy | Close the other app, or PORT=3001 npm run dev |
-| App loads but deleting a card errors | Known planted bug | Not a setup problem — the app is running fine ✅ |
+
 
 Still stuck? Read the FIRST red line of the error, copy the exact message, and
 search it or paste it into your AI setup co-pilot. One error at a time.

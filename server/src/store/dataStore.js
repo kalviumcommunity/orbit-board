@@ -101,13 +101,11 @@ function deleteCard(boardId, columnId, cardId) {
   const boards = readData();
   const { column } = findColumn(boards, boardId, columnId);
 
-  // 🐛 KNOWN BUG (good first issue — see docs/faq.md):
-  // This looks up the card by the WRONG property. Cards use `id`, not `cardId`,
-  // so `target` is always `undefined`. Reading `target.id` on the next line then
-  // throws: "Cannot read properties of undefined (reading 'id')".
-  // The app runs fine otherwise — the error only appears on delete.
-  const target = column.cards.find((card) => card.cardId === cardId);
-  column.cards = column.cards.filter((card) => card.id !== target.id);
+  const cardIndex = column.cards.findIndex((card) => card.id === cardId);
+  if (cardIndex === -1) {
+    throw Object.assign(new Error('Card not found'), { status: 404 });
+  }
+  column.cards.splice(cardIndex, 1);
 
   writeData(boards);
   return { ok: true };
