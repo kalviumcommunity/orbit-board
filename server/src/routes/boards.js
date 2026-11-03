@@ -59,7 +59,6 @@ router.put('/boards/:boardId/columns/:columnId/cards/:cardId', (req, res, next) 
 });
 
 // DELETE /api/boards/:boardId/columns/:columnId/cards/:cardId — delete a card
-// 🐛 Known bug lives in store.deleteCard (see docs/faq.md).
 router.delete('/boards/:boardId/columns/:columnId/cards/:cardId', (req, res, next) => {
   try {
     const { boardId, columnId, cardId } = req.params;

@@ -53,17 +53,4 @@ OrbitBoard is intentionally **~50% complete**. These are open for contribution:
 |---|---|---|
 | Drag-and-drop between columns | ⏳ Not implemented | `react-beautiful-dnd` is installed but unused. See `client/src/components/Column.jsx` TODO. |
 | Card editing | ⏳ Read-only | The `PUT` endpoint exists, but the UI doesn't wire it up yet. |
-| **Deleting a card** | 🐛 **Broken (good first bug)** | Clicking delete throws a server error. The app still runs fine otherwise. |
 
-### 🐛 The "delete a card" bug (good first issue)
-When you click the delete (✕) button on a card, the request fails and the server
-logs an error. The app itself keeps running — only that one action breaks.
-
-- **Where to look:** `server/src/store/dataStore.js` (`deleteCard`) and
-  `server/src/routes/boards.js` (the `DELETE` route).
-- **Hint:** pay close attention to how the code *finds* the card before removing
-  it, and what value it filters on.
-- **Acceptance:** deleting a card removes it and returns `{ "ok": true }`, and
-  `npm run dev` still boots and renders the board.
-
-This is a great first contribution — grab it from the Issues tab! 💚

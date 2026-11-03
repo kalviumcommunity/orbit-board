@@ -32,8 +32,7 @@ export default function App() {
       </header>
 
       <div className="banner">
-        ⏳ Drag-and-drop and card editing are not implemented yet. 🐛 Deleting a
-        card currently throws a known error — see <code>docs/faq.md</code>.
+        ⏳ Drag-and-drop and card editing are not implemented yet.
       </div>
 
       {loading && <p style={{ margin: 24 }}>Loading board…</p>}

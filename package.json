@@ -27,7 +27,7 @@
     "dev:server": "node server/src/index.js",
     "dev:client": "npm --prefix client run dev",
     "lint": "echo \"(lint placeholder — configure eslint here)\" && exit 0",
-    "test": "echo \"(no tests yet — see docs/faq.md)\" && exit 0"
+    "test": "node --test server/test/dataStore.test.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

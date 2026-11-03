@@ -84,8 +84,7 @@ OrbitBoard is a great place to make your first open-source contribution:
 
 - ⏳ **Drag-and-drop** between columns is not implemented yet.
 - ⏳ **Card editing** is currently read-only.
-- 🐛 **Deleting a card throws an error** — a well-contained bug, perfect for a
-  first fix. (The app still runs fine otherwise.)
+
 
 See [`docs/faq.md`](./docs/faq.md) and the **Issues** tab for details.
 
